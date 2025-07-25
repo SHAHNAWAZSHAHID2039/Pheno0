@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌸فِينُو صَاحِبَةُ </title>
+<link rel="stylesheet" href=".css">
+</head>
+<body>
+  <div class="picture-container">
+    <div class="title-on-image">
+        THIS IS SPECIAL FOR YOU 🌸</div>
+    <img src="02-removebg-preview.png" alt="Your Picture" class="picture-image" />
+  </div>
+<audio autoplay loop hidden>
+  <source src="Purity - Beautiful Piano Song, Relaxing BGM ｜BigRicePiano [Lox_jyvBBEk].mp3" type="audio/mpeg">
+</audio>
+
+  <script>
+    const container = document.querySelector('.picture-container');
+    const styles = ['emoji-style1', 'emoji-style2', 'emoji-style3', 'emoji-style4', 'emoji-style5'];
+    const emojis = ['❤️', '🌸', '💖', '🦋', '✨', '🥰'];
+
+    let lastTime = 0;
+
+    container.addEventListener('mousemove', function (e) {
+      const now = Date.now();
+      if (now - lastTime < 150) return;
+      lastTime = now;
+
+      const emoji = document.createElement('div');
+      const style = styles[Math.floor(Math.random() * styles.length)];
+      const symbol = emojis[Math.floor(Math.random() * emojis.length)];
+
+      emoji.className = `emoji ${style}`;
+      emoji.textContent = symbol;
+
+      const randomX = (Math.random() * 100 - 50) + 'px';
+      emoji.style.setProperty('--x', randomX);
+
+      const rect = container.getBoundingClientRect();
+      emoji.style.left = (e.clientX - rect.left) + 'px';
+      emoji.style.top = (e.clientY - rect.top) + 'px';
+
+      container.appendChild(emoji);
+
+      setTimeout(() => emoji.remove(), 4000);
+    });
+  </script>
+
+</body>
+</html>
